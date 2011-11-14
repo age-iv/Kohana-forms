@@ -1,0 +1,8 @@
+.contain{margin:0;padding:0;font-size:16px;height:600px;position:relative;}
+.header{text-align:left;font-size:2em;width:80%;float:left;margin:30px;}
+.login{margin-top:30px;font-size:0.8em;float:left;}
+.block{width:80%;float:left;}
+.news{width:20%;float:left;text-align:left;}
+.message{float:none;}
+.footer{float:none;width:100%;height:30px;}
+.cc{clear:both;}

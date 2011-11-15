@@ -107,7 +107,7 @@ Kohana::modules(array(
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
-	'kohana-email'	=> MODPATH.'kohana-email',	//Module for send email
+	'email'	=> MODPATH.'email',	//Module for send email
 	'message'		=> MODPATH.'message',	//message using session
 	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing

@@ -128,13 +128,6 @@ Route::set('media', 'media(/<file>)', array('file' => '.+'))
 		'action'     => 'media',
 		'file'       => NULL,
 	));
-
-Route::set('forms', '<type>(/<action>)',
-			array('controller'=>'forms'))
-	->defaults(array(
-		'controller' => 'forms',
-		'action'     => 'index',
-	));
 	
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(

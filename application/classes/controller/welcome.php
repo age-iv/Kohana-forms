@@ -25,7 +25,7 @@ class Controller_Welcome extends Controller_Front {
 			if($captcha->valid($_POST['captcha']))
 			{
 				Email::connect();
-				Email::send('ageev_m@isuct.ru', array('ageev_m@isuct.ru',__('site_name')), $_POST['subject'], $_POST['message']);
+				Email::send($this->config['admin_email'], array($this->config['admin_email'],__('site_name')), $_POST['subject'], $_POST['message']);
 				
 				$this->go_back('notice',__('feedback.send'));
 			} else {

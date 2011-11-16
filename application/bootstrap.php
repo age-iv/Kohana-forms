@@ -102,6 +102,7 @@ Kohana::modules(array(
 	'A1'			=> MODPATH.'A1',		//Additional authentication
 	'A2'			=> MODPATH.'A2',		//Decorator for A1 and ACL
 	'ACL'			=> MODPATH.'ACL',		//Manage roles
+	'captcha'		=> MODPATH.'captcha',
 	//'auth'       => MODPATH.'auth',       // Basic authentication
 	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
@@ -126,6 +127,13 @@ Route::set('media', 'media(/<file>)', array('file' => '.+'))
 	->defaults(array(
 		'action'     => 'media',
 		'file'       => NULL,
+	));
+
+Route::set('forms', '<type>(/<action>)',
+			array('controller'=>'forms'))
+	->defaults(array(
+		'controller' => 'forms',
+		'action'     => 'index',
 	));
 	
 Route::set('default', '(<controller>(/<action>(/<id>)))')

@@ -78,7 +78,7 @@ return array(
 			
 			'user2' => array(
 				'role'      => 'user',
-				'resource'  => 'news',
+				'resource'  => array('news','department'),
 				'privilege' => 'add'
 //				'privilege' => array('edit','delete'),
 //				'assertion' => array('Acl_Assert_Argument',array('id'=>'user_id'))
@@ -94,7 +94,7 @@ return array(
 			
 			'admin2' => array(
 				'role'      => 'admin',
-				'resource'  => array('register','news'),
+				'resource'  => array('register','news','department'),
 				'privilege' => array('edit','delete')
 			),
 		),

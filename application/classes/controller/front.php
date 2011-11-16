@@ -24,6 +24,8 @@ class Controller_Front extends Kohana_Controller_Template {
 	public $privilege = NULL;
 	public $auth = NULL;
 	
+	public $scripts = NULL;
+	public $styles = NULL;
 	public $title = NULL;
 	public $header = NULL;
 	public $login = NULL;
@@ -49,7 +51,9 @@ class Controller_Front extends Kohana_Controller_Template {
 		$this->auth = $this->a2->a1;
 
 		$this->user = $this->a2->get_user();
-
+		
+		$this->scripts = array();
+		$this->styles = array();
 		$this->title = $this->config['site_name'];
 		$this->header = Widget::widget_static('header',array('site_name'=>$this->config['site_name']));
 		$this->login = $this->user_info();
@@ -82,19 +86,21 @@ class Controller_Front extends Kohana_Controller_Template {
 			$media = Route::get('media');
 
 			// Add styles
-			$this->template->styles = array(
+			$styles = array(
 				$media->uri(array('file' => 'css/print.css'))  => 'print',
 				$media->uri(array('file' => 'css/screen.css')) => 'screen',
-				$media->uri(array('file' => 'css/jquery-ui.css')),
+				$media->uri(array('file' => 'css/jquery-ui.css')) => 'screen',
 			);
 
 			// Add scripts
-			$this->template->scripts = array(
+			$scripts = array(
 				$media->uri(array('file' => 'js/jquery.min.js')),
 			//	$media->uri(array('file' => 'js/jquery.mobile.min.js')),
 				$media->uri(array('file' => 'js/jquery-ui.min.js')),
 			);
 		}	
+			$this->template->scripts = Arr::merge($scripts, $this->scripts);
+			$this->template->styles = Arr::merge($styles, $this->styles);
 			$this->template->title = $this->title;
 			$this->template->header = $this->header;
 			$this->template->login = $this->login;
@@ -110,7 +116,7 @@ class Controller_Front extends Kohana_Controller_Template {
 	{
 		if( $this->user )
 		{
-			$s =  '<b>'.$this->user->username.'</b> ' . html::anchor('auth/logout','Logout');
+			$s =  '<b>'.$this->user->username.'</b> ' . html::anchor('auth/logout',__('auth.logout'));
 		}
 		else
 		{
